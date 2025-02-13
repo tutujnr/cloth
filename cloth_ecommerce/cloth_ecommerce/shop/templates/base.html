@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Clothify4All.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    {% block title %}
+    <title>FaithFashions</title>
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbarstyle" style="background-color: #4a47f0">
+        <div>
+            <a class="navbar-brand" id="actives" href="{% url 'shop' %}"><i class="fa fa-shop"><b id="shop"> Home</b></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <div class="btn-group" id="dropmenu">
+                        <button type="button" class="btn btn-light"><b class="me">Items</b></button>
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item explore" href="{% url 'clothy4men' %}">Men</a>
+                            <a class="dropdown-item explore" href="{% url 'clothy4women' %}">Women</a>
+                            <a class="dropdown-item explore" href="{% url 'clothy4kids' %}">Kids</a>
+                            <div class="dropdown-divider explore"></div>
+                            <a class="dropdown-item explore" href="{% url 'shop' %}">FaithFashions</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search for products..." aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="actives" type="submit"><i class="fa fa-user-secret" aria-hidden="true">Search</i> </button>
+                    </form>
+                </li>
+            </ul>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="navbar-brand navbc" id="actives" href="{% url 'cart' %}"><i class="fa fa-user-secret" aria-hidden="true"><b id=""> Cart</b></i></a></li>
+                        <li class="nav-item"><a class="navbar-brand navbc" id="actives" href="{% url 'reviews' %}"><i class="fa fa-user-secret" aria-hidden="true"><b id=""> Reviews</b></i></a></li>
+                        <li class="nav-item"><a class="navbar-brand navbc" id="actives" href="{% url 'logout' %}"><i class="fa fa-user-secret" aria-hidden="true"><b id=""> Logout</b></i></a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="navbar-brand navbc" id="actives" href="{% url 'login' %}"><i class="fa fa-user-secret" aria-hidden="true"><b id=""> LogIn</b></i></a></li>
+                        <li class="nav-item"><a class="navbar-brand navbc" id="actives" href="{% url 'register' %}"><i class="fa fa-user-secret" aria-hidden="true"><b id="">Register</b></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Fashions</h4>
+                    <ul>
+                        <li><a href="{% url 'shop' %}" id="address">Home</a></li>
+                        <li><a href="#" id="address">About</a></li>
+                        <li><a href="#" id="address">Pricing</a></li>
+                        <li><a href="#" id="address">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="#" id="address">Returns</a></li>
+                        <li><a href="#" id="address">Contact Us</a></li>
+                        <li><a href="#" id="address">Order Status</a></li>
+                        <li><a href="#" id="address">Payment Options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Address</h4>
+                    <ul>
+                        <li><a href="#" id="address">200, Eldoret<br>Kenya<br>
+                        <a href="tel:07000000" id="address"> <i class="fa fa-phone" aria-hidden="true"> Click To Call </i></a>
+                        <a href="mailto:faith.fashion005@gmail.com" id="address"><i class="fa fa-envelope"> Send Email</i></a>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <legend class="copyright"> FaithFashions &copy 2025. All Right Reserved.</legend> 
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

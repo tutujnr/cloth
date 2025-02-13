@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout Successful{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="text-success">Thank You for Your Purchase!</h1>
+    <p class="lead">Your order has been successfully placed. We appreciate your business!</p>
+    
+    <div class="mt-4">
+        <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
+        <a href="{% url 'cart' %}" class="btn btn-secondary">View Your Cart</a>
+    </div>
+
+    <div class="mt-5">
+        <img src="https://cdn-icons-png.flaticon.com/512/3159/3159066.png" alt="Order Success" width="150">
+    </div>
+</div>
+{% endblock %}

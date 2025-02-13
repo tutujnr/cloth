@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Search Results for "{{ query }}"</title>
+{% endblock %}
+
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'css/clothes.css' %}">
+
+{% if products %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <!--<p class="card-text">{{ product.description|truncatewords:15 }}</p>
+                        <p class="card-text"><strong>Brand:</strong> {{ product.brand }}</p>-->
+                        <p class="card-text"><strong>Price:</strong> KES {{ product.discounted_price |floatformat:2 }}</p>
+                        <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary mt-auto btn-block">Add to Cart</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No products found matching your search.</p>
+{% endif %}
+{% endblock %}

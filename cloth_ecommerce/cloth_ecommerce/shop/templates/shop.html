@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% block home_url %}index.html{% endblock %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+{% block content %}
+<script type="text/javascript">
+  function displayNextImage() {
+      x = (x === images.length - 1) ? 0 : x + 1;
+      document.getElementById("img").src = images[x];
+  }
+
+  function displayPreviousImage() {
+      x = (x <= 0) ? images.length - 1 : x - 1;
+      document.getElementById("img").src = images[x];
+  }
+
+  function startTimer() {
+      setInterval(displayNextImage, 5000);
+  }
+
+  var images = [], x = -1;
+  images[0] = "{% static 'img/blog-2.jpg' %}";
+  images[1] = "{% static 'img/women.jpg' %}";
+  images[2] = "{% static 'img/kids.jpg' %}";
+  images[3] = "{% static 'img/kid1.png' %}";
+  images[4] = "{% static 'img/blog-1.jpg' %}";
+</script>
+
+<body onload="startTimer()">
+  <img id="img" src="{% static 'img/women.jpg' %}" alt="Girl Shop" style="height: 30rem;">
+  <button type="button" class="btn btn-info btn-sm left" onclick="displayPreviousImage()" style="height: 2rem; background-color: #4a47f0;"><b>Previous</b></button>
+  <button type="button" class="btn btn-info btn-sm right" onclick="displayNextImage()" style="height: 2rem; background-color: #4a47f0;"><b>Next</b></button>
+
+  <div class="container-fluid">
+    <section>
+      <p class="paragraph">FaithFashions is an e-commerce platform offering stylish and affordable clothing for men, women, and kids. 
+        With a diverse collection of trendy outfits, the platform ensures quality and accessibility for fashion lovers. 
+        Customers can easily browse, search for products, add items to their cart, and place orders seamlessly. 
+        The brand focuses on delivering fashionable clothing while maintaining excellent customer service. 
+        Whether for casual, formal, or seasonal wear, FaithFashions aims to make fashion accessible to everyone..</p>
+    </section>
+  </div>
+
+  <div class="neonText">
+    <h3 id="neontxthit">Collections</h3>
+  </div>
+
+  <div class="first-div row">
+    <div class="tp col-10 col-sm-6 col-md-4">
+      <div class="card" style="width: 18rem;" id="hovercard">
+        <a href="{% url 'clothy4women' %}">
+          <img class="card-img-top" src="static/img/blog_01.jpg" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <p class="card-text">
+            <a href="{% url 'clothy4women' %}" class="cardheading"><b style="text-decoration: underline;">Women's Apparel</b></a><br>
+            From casual to chic, our women's Collection brings elegance and comfort. Dress with confidence and express your style.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="tp col-10 col-sm-6 col-md-4">
+      <div class="card" style="width: 18rem;" id="hovercard">
+        <a href="{% url 'clothy4men' %}">
+          <img class="card-img-top" src="static/img/shirt1.jpg" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <p class="card-text">
+            <a href="{% url 'clothy4men' %}" class="cardheading"><b style="text-decoration: underline;">Men's Fashion</b></a><br>
+            Discover timeless styles and the latest trends for every man. Elevate your wardrobe with quality, comfort and versatility.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="tp col-10 col-sm-6 col-md-4">
+      <div class="card" style="width: 18rem;" id="hovercard">
+        <a href="{% url 'clothy4kids' %}">
+          <img class="card-img-top" src="static/img/cutie.jpg" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <p class="card-text">
+            <a href="{% url 'clothy4kids' %}" class="cardheading"><b style="text-decoration: underline;">Kids' Clothing</b></a><br>
+            Keep your little ones stylish and comfortable. Shop vibrant, durable and fun clothes perfect for every adventure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="second-div row">
+        <div class="tp1 col-10 col-sm-6 col-md-4">
+            <div class="card" style="width: 18rem;" id="hovercard">
+                <a href="{% url 'clothy4men' %}"><img class="card-img-top" src="static/img/men.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                    <p class="card-text"><a href="{% url 'clothy4men' %}" class="cardheading"><b style="text-decoration: underline;">Seasonal Fashion</b></a> <br>
+                      Embrace the season's latest trends. Whether it's summer or winter, stay fashionable and rady for any Whether change. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tp1 col-10 col-sm-6 col-md-4">
+            <div class="card" style="width: 18rem;" id="hovercard">
+                <a href="{% url 'clothy4kids' %}"><img class="card-img-top" src="static/img/kids.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                    <p class="card-text"><a href="{% url 'clothy4kids' %}" class="cardheading"><b style="text-decoration: underline;">Sportswear</b></a> <br>
+                      Boost your performance with our top-quality sportswear. Designed for comfort, durability and 
+                      style to support your active lifestyle.
+                   </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tp1 col-10 col-sm-6 col-md-4">
+            <div class="card" style="width: 18rem;" id="hovercard">
+                <a href="{% url 'clothy4women' %}"><img class="card-img-top" src="static/img/dress.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                    <p class="card-text"><a href="{% url 'clothy4women' %}" class="cardheading"><b style="text-decoration: underline;">Accessories & Footwear</b></a> <br>
+                      Complete your Accessories and Footwear collection. Step up your style with quality and trendy choices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Products Listing
+  <div class="row mt-4">
+    {% for product in products %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;" id="hovercard">
+          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5>{{ product.name }}</h5>
+            <p>Price: KES {{ product.get_final_price }}</p>
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>-->
+</body>
+
+{% endblock %}

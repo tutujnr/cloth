@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/reviews.css' %}">
+
+<section class="features" id="features">
+    <h1 class="heading"><span>features</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{% static 'img/women.jpg' %}">
+            <h3>Premium Quality Effects</h3>
+            <p>
+                Our fabrics are carefully selected for durability, comfort and style.
+                Feel the difference with every wear. 
+            </p>
+            <a href="#" class="btnn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/images.jpg' %}">
+            <h3>Fast & Free Delivery</h3>
+            <p>
+                Enjoy our fast, reliable and free shipping on all orders.
+                Get your favourite styles delivered right to your door quickly.
+            </p>
+            <a href="#" class="btnn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/money.png' %}">
+            <h3>Affordable Fashion</h3>
+            <p>
+                Get the latest trends without breaking the bank. Stylish yet budget-friendly, 
+                our prices are perfect for every shopper.
+            </p>
+            <a href="#" class="btnn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="categories" id="categories">
+
+    <h1 class="heading" id="moveon2"><span>categories</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{% static 'img/shirt7.jpg' %}">
+            <h3>Men's Fashion</h3>
+            <p>Upto 61% Off</p>
+            <a href="{% url 'clothy4men' %}" class="btnn">Shop Now</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/rev.jpg' %}">
+            <h3>Women's Outfit</h3>
+            <p>Upto 55% Off</p>
+            <a href="{% url 'clothy4women' %}" class="btnn">Shop Now</a>
+        </div>
+        
+        <div class="box">
+            <img src="{% static 'img/kid002.jpg' %}">
+            <h3>Boys Wear</h3>
+            <p>Upto 55% Off</p>
+            <a href="{% url 'clothy4kids' %}" class="btnn">Shop Now</a>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/kid001.jpg' %}">
+            <h3>Girls Clothing</h3>
+            <p>Upto 35% Off</p>
+            <a href="{% url 'clothy4kids' %}" class="btnn">Shop Now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> <span>Blogs</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{% static 'img/june.jpg' %}" alt="">
+            <div class="content">
+                <div class="icons">
+                    <a href=""> <i class="fas fa-user"></i> By June</a>
+                    <a href="#"> <i class="fas fa-calendar"></i> 15th Jan, 2025 </a>
+                </div>
+                <h3>Top 5 Trends in Women's Fashion</h3>
+                <p>
+                    Stay ahead of the curve with these top 5 fashion trends for women. 
+                    Embrace style and comfort every day.
+                </p>
+                <a href="" class="btnn">Read More</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/joy.jpg' %}" alt="">
+            <div class="content">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-user"></i> By Mary </a>
+                    <a href="#"> <i class="fas fa-calendar"></i> 24th Jan, 2025 </a>
+                </div>
+                <h3>How to Choose the Right Fit for Your Body shape</h3>
+                <p>
+                    Learn how to pick clothes that flatter your shape and make you feel confident. 
+                    Fashion tailored for every body.
+                </p>
+                <a href="" class="btnn">Read More</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="{% static 'img/shirt8.jpg' %}" alt="">
+            <div class="content">
+                <div class="icons">
+                    <a href=""> <i class="fas fa-user"></i> Enzo </a>
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st Feb, 2025 </a>
+                </div>
+                <h3>Sustainable Fashion: Why It's More Important Than Never</h3>
+                <p>
+                    Discover how sustainable fashion is reshaping the industry. Ethical choices that 
+                    contribute to both style and the planet.
+                </p>
+                <a href="#" class="btnn">Read More</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+<h1 class="heading"> <span>Reviews </span> </h1>
+<div class="card-group" style="background-color: rgb(245, 246, 249);">
+    <div class="card" style="margin-right: 1rem;">
+      <img src="{% static 'img/avatar2.jpg' %}" class="card-img-top" id="reviewimg">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: 2rem;">James D.</h5>
+        <p class="card-text" style="font-size: 1.7rem;">
+            Loved my purchase! The fabric quality is amazing and the fit is perfect.
+            Will definitely shop again.
+        </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted" style="font-size: 1.3rem;">Last Updated 3 Mins Ago</small>
+      </div>
+    </div>
+    <div class="card" style="margin-right: 1rem;">
+        <img src="{% static 'img/avatar1.jpg' %}" class="card-img-top" id="reviewimg">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: 1.7rem; font-weight: bold;">Mama June</h5>
+        <p class="card-text" style="font-size: 1.6rem;">
+            Quick shipping and great customer service. The clothing was just as describe. 
+            Totally worth the investment.
+        </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted" style="font-size: 1.3rem;">Last Updated 8 Days Ago</small>
+      </div>
+    </div>
+    <div class="card" style="margin-right: 1rem;">
+        <img src="{% static 'img/avatar3.jpg' %}" class="card-img-top" id="reviewimg">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: 1.7rem; font-weight: bold;">Palmer R.</h5>
+        <p class="card-text" style="font-size: 1.6rem;">
+            Fantastic collection! I found exactly what I was looking for. 
+            Prices are affordable, and the quality is top-notch.
+        </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted" style="font-size: 1.3rem;">Last Updated 22 days Ago</small>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

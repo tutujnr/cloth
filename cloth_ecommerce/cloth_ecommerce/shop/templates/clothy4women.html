@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block home_url %}index.html{% endblock %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/clothes.css' %}">
+<h2 class="text-center my-4">Women Clothes</h2>
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 d-flex align-items-stretch">
+                <div class="card w-100" id="hovercard">
+                    <img src="{{ product.image.url }}?v=1" class="card-img-top" alt="{{ product.name }}">
+
+                    <div class="text-center mt-2">
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        
+                        {% if product.discount > 0 %}
+                            <p>
+                                <span style="text-decoration: line-through; color: grey;">KES {{ product.price }}</span><br>
+                                <span style="color: red; font-weight: bold;">KES {{ product.discounted_price|floatformat:2 }}</span><br>
+                                <span style="color: green;">({{ product.discount }}% OFF)</span>
+                            </p>
+                        {% else %}
+                            <p>KES {{ product.price }}</p>
+                        {% endif %}
+                        
+                        <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary mt-auto btn-block">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No products available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

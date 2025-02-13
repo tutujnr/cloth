@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mt-4">Your Shopping Cart</h2>
+    
+    {% if cart.cart_items.all %}
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart.cart_items.all %}
+                <tr>
+                    <td>
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="80" height="80">
+                    </td>
+                    <td>{{ item.product.name }}</td>
+                    <td>KES {{ item.product.discounted_price |floatformat:2 }}</td>
+                    <td>
+                        <form method="post" action="{% url 'update_cart' item.product.id %}">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 70px; display: inline;">
+                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        </form>
+                    </td>
+                    <td>KES {{ item.total_price }}</td>
+                    <td>
+                        <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4 class="text-right">Total: KES {{ cart.get_total_price |floatformat:2 }}</h4>
+
+        <div class="text-right mt-3">
+            <a href="{% url 'shop' %}" class="btn btn-secondary">Continue Shopping</a>
+            <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+
+    {% else %}
+        <p class="text-center mt-4">Your cart is empty. <a href="{% url 'shop' %}">Shop now</a></p>
+    {% endif %}
+</div>
+{% endblock %}

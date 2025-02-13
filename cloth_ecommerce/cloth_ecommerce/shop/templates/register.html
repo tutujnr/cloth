@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/clothes.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+<div class="container1">
+    <div class="card animated fadeIn">
+        <h2>Register</h2>
+
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required onkeyup="validatePassword()">
+                <small id="passwordHelp" class="form-text text-muted">
+                    Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character.
+                </small>
+
+                <ul id="password-requirements">
+                    <li id="length" class="invalid">At least 8 characters</li>
+                    <li id="uppercase" class="invalid">At least 1 uppercase letter</li>
+                    <li id="lowercase" class="invalid">At least 1 lowercase letter</li>
+                    <li id="digit" class="invalid">At least 1 digit</li>
+                    <li id="special" class="invalid">At least 1 special character (!@#$%^&*)</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation">Confirm Password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required onkeyup="validatePassword()">
+                <small id="match" class="form-text text-danger" style="display:none;">Passwords do not match!</small>
+            </div>
+
+            <button type="submit" class="btn btn-secondary" id="submit-btn" disabled>Register</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</div>
+
+<div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
+<script>
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('password_confirmation').value;
+        const submitButton = document.getElementById('submit-btn');
+
+        const lengthReq = password.length >= 8;
+        const uppercaseReq = /[A-Z]/.test(password);
+        const lowercaseReq = /[a-z]/.test(password);
+        const digitReq = /\d/.test(password);
+        const specialCharReq = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const passwordsMatch = password === confirmPassword;
+
+        document.getElementById('length').className = lengthReq ? 'valid' : 'invalid';
+        document.getElementById('uppercase').className = uppercaseReq ? 'valid' : 'invalid';
+        document.getElementById('lowercase').className = lowercaseReq ? 'valid' : 'invalid';
+        document.getElementById('digit').className = digitReq ? 'valid' : 'invalid';
+        document.getElementById('special').className = specialCharReq ? 'valid' : 'invalid';
+
+        if (confirmPassword) {
+            document.getElementById('match').style.display = passwordsMatch ? 'none' : 'block';
+        }
+
+        if (lengthReq && uppercaseReq && lowercaseReq && digitReq && specialCharReq && passwordsMatch) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+</script>
+
+<style>
+    .valid {
+        color: green;
+    }
+
+    .invalid {
+        color: red;
+    }
+</style>
+
+{% endblock %}
