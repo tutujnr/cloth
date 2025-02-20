@@ -48,7 +48,6 @@ and an admin dashboard.
 - Register or log in as a user.
 - Browse and search for products.
 - Add products to the cart and proceed to checkout.
-- Make payments via Stripe.
 - View past orders and leave reviews.
 
 ## Admin Dashboard
